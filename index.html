@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAPUZ CALENDAR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url('e22.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-image:  url('e22.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .month {
+            margin-bottom: 40px;
+        }
+        .month-name {
+         text-align: center;
+         font-size: 28px;
+         font-weight: bold;
+         color: white;
+         background: linear-gradient(to right, #ff512f, #dd2476); /* gradient background */
+         padding: 10px;
+         border-radius: 8px;
+         margin-bottom: 15px;
+         text-shadow: 2px 2px 5px black;
+         letter-spacing: 2px;
+        }
+        .week-numbers {      
+           font-size: 18px;
+           font-weight: 600;
+           color: #ffffff;
+           text-align: center;
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .days div {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #333;
+        }    
+        .sunday { color: red; font-weight: bold; }
+        
+        }
+        .holiday {
+            background-color: red;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+        }
+        .week-number {
+            font-size: 12px;
+            color: white;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            width: 300px;
+
+        }
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+        .popup img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .popup-close {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="text-align:center;
+           font-size:42px;
+           font-family:'Trebuchet MS', sans-serif;
+           color:white;
+           text-shadow: 2px 2px 5px black, 0 0 20px black;">
+  Calendar 2024
+</h1>
+
+
+    <!-- January 2024 -->
+    <div class="month">
+        <div class="month-name">January 2024</div>
+        <div class="week-numbers">Week 1 - Week 5</div>
+        <div class="days">
+
+         <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Empty slot bago ang Jan 1 (Monday) -->
+    <div></div>
+    
+    <!-- Days -->
+    <div class="holiday" 
+         onclick="showPopup('New Year\'s Day', 'January 1st is New Year\'s Day, celebrated worldwide.', 'ee.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div style="color:red; font-weight:bold;">7</div> <!-- Sunday -->
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div style="color:red; font-weight:bold;">14</div> <!-- Sunday -->
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div style="color:red; font-weight:bold;">21</div> <!-- Sunday -->
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div style="color:red; font-weight:bold;">28</div> <!-- Sunday -->
+    <div>29</div>
+    <div>30</div>
+    <div>31</div>
+  </div>
+</div>
+
+
+    <!-- February 2024 -->
+    <div class="month">
+        <div class="month-name">February 2024</div>
+        <div class="week-numbers">Week 5 - Week 9</div>
+        <div class="days">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Empty slots bago mag-Feb 1 (Thu) -->
+    <div></div><div></div><div></div><div></div>
+    
+    <!-- February days -->
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div style="color:red; font-weight:bold;">4</div> <!-- Sunday -->
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div style="color:red; font-weight:bold;">11</div> <!-- Sunday -->
+    <div>12</div>
+    <div>13</div>
+    <!-- Valentine’s Day aligned to Wed -->
+    <div class="holiday" 
+         onclick="showPopup('Valentine\'s Day', 'February 14th is Valentine\'s Day, celebrated as a day of love and affection.', 'valentines.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div style="color:red; font-weight:bold;">18</div> <!-- Sunday -->
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div style="color:red; font-weight:bold;">25</div> <!-- Sunday -->
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div> <!-- Leap year 2024 -->
+  </div>
+</div>
+
+     <div class="month">
+        <div class="month-name">March 2024</div>
+        <div class="week-numbers">Week 9 - Week 13</div>
+        <div class="days">
+       <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Empty slots bago ang March 1 (Friday) -->
+    <div></div><div></div><div></div><div></div><div></div>
+    
+    <!-- Start of March -->
+    <div>1</div> <!-- Friday -->
+    <div>2</div> <!-- Saturday -->
+    <div style="color:red; font-weight:bold;">3</div> <!-- Sunday -->
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div style="color:red; font-weight:bold;">10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div style="color:red; font-weight:bold;">17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div style="color:red; font-weight:bold;">24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    
+    <!-- March 28 – Maundy Thursday -->
+    <div class="holiday"
+         onclick="showPopup('Maundy Thursday', 'March 28, 2024 is Maundy Thursday, part of the Holy Week observance.', '3d.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">28</div>
+    
+    <!-- March 29 – Good Friday -->
+    <div class="holiday"
+         onclick="showPopup('Good Friday', 'March 29, 2024 is Good Friday, observed by Christians worldwide.', 'good.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">29</div>
+    
+    <div>30</div>
+    <div style="color:red; font-weight:bold;">31</div> <!-- Easter Sunday -->
+  </div>
+</div>
+     
+
+      <div class="month">
+        <div class="month-name">April 2024</div>
+        <div class="week-numbers">Week 14 - Week 18</div>
+        <div class="days">
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Empty slot bago ang April 1 (Monday) -->
+    <div></div>
+    
+    <!-- Start of April -->
+    <div>1</div> <!-- Monday -->
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div style="color:red; font-weight:bold;">7</div> <!-- Sunday -->
+    <div>8</div>
+    
+    <!-- April 9 – Araw ng Kagitingan -->
+    <div class="holiday"
+         onclick="showPopup('Araw ng Kagitingan', 'April 9, 2024 is Araw ng Kagitingan (Day of Valor).', 'rr.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">9</div>
+    
+    <!-- April 10 – Eid’l Fitr -->
+    <div class="holiday"
+         onclick="showPopup('Eid\'l Fitr', 'April 10, 2024 is Eid\'l Fitr, a major Islamic celebration.', 'th.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">10</div>
+    
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div style="color:red; font-weight:bold;">14</div> <!-- Sunday -->
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div style="color:red; font-weight:bold;">21</div> <!-- Sunday -->
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div style="color:red; font-weight:bold;">28</div> <!-- Sunday -->
+    <div>29</div>
+    <div>30</div>
+  </div>
+</div>
+
+    <div class="month">
+  <div class="month-name">May 2024</div>
+  <div class="week-numbers">Week 18 - Week 22</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Empty slots bago ang May 1 (Wednesday) -->
+    <div></div><div></div><div></div>
+    
+    <!-- May 1 – Labor Day -->
+    <div class="holiday"
+         onclick="showPopup('Labor Day', 'May 1, 2024 is Labor Day, a regular holiday in the Philippines.', 'ge.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">1</div>
+    
+    <!-- Rest of first week -->
+    <div>2</div><div>3</div><div>4</div>
+    <div style="color:red; font-weight:bold;">5</div> <!-- Sunday -->
+    
+    <!-- Second week -->
+    <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
+    <div style="color:red; font-weight:bold;">12</div> <!-- Sunday -->
+    
+    <!-- Third week -->
+    <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
+    <div style="color:red; font-weight:bold;">19</div> <!-- Sunday -->
+    
+    <!-- Fourth week -->
+    <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+    <div style="color:red; font-weight:bold;">26</div> <!-- Sunday -->
+    
+    <!-- Last days -->
+    <div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+  </div>
+</div>
+
+  
+
+    <div class="month">
+  <div class="month-name">June 2024</div>
+  <div class="week-numbers">Week 22 - Week 26</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Empty slots bago ang June 1 (Saturday) -->
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+    
+    <!-- June 1 -->
+    <div>1</div>
+    
+    <!-- First week -->
+    <div style="color:red; font-weight:bold;">2</div> <!-- Sunday -->
+    <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div>
+    
+    <!-- Second week -->
+    <div style="color:red; font-weight:bold;">9</div> <!-- Sunday -->
+    <div>10</div><div>11</div>
+    
+    <!-- June 12 – Independence Day (Holiday) -->
+    <div class="holiday"
+         onclick="showPopup('Independence Day', 'June 12, 2024 is Philippine Independence Day, a regular holiday.', 'hh.gif')" 
+         style="color:red; font-weight:bold; cursor:pointer;">12</div>
+    
+    <div>13</div><div>14</div><div>15</div>
+    
+    <!-- Third week -->
+    <div style="color:red; font-weight:bold;">16</div> <!-- Sunday -->
+    <div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div>
+    
+    <!-- Fourth week -->
+    <div style="color:red; font-weight:bold;">23</div> <!-- Sunday -->
+    <div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div>
+    
+    <!-- Last day -->
+    <div style="color:red; font-weight:bold;">30</div> <!-- Sunday -->
+  </div>
+</div>
+
+
+   <div class="month">
+  <div class="month-name">July 2024</div>
+  <div class="week-numbers">Week 27 - Week 31</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- July 1 starts Monday -->
+    <div></div> <!-- Sunday -->
+    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+    
+    <!-- Second week -->
+    <div style="color:red; font-weight:bold;">7</div> <!-- Sunday -->
+    <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
+    
+    <!-- Third week -->
+    <div style="color:red; font-weight:bold;">14</div> <!-- Sunday -->
+    <div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+    
+    <!-- Fourth week -->
+    <div style="color:red; font-weight:bold;">21</div> <!-- Sunday -->
+    <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
+    
+    <!-- Fifth week -->
+    <div style="color:red; font-weight:bold;">28</div> <!-- Sunday -->
+    <div>29</div><div>30</div><div>31</div>
+    <div></div><div></div><div></div> <!-- Blanks para balance -->
+  </div>
+</div>
+
+
+    <div class="month">
+  <div class="month-name">August 2024</div>
+  <div class="week-numbers">Week 31 - Week 35</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- August starts Thursday (need 4 blanks first) -->
+    <div></div><div></div><div></div><div></div>
+    <div>1</div><div>2</div><div>3</div>
+    
+    <!-- Week 2 -->
+    <div><span style="color:red; font-weight:bold;">4</span></div>
+    <div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+    
+    <!-- Week 3 -->
+    <div><span style="color:red; font-weight:bold;">11</span></div>
+    <div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
+    
+    <!-- Week 4 -->
+    <div><span style="color:red; font-weight:bold;">18</span></div>
+    <div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
+    
+    <!-- Week 5 -->
+    <div><span style="color:red; font-weight:bold;">25</span></div>
+    <div class="holiday" onclick="showPopup('National Heroes Day', 'August 26 is National Heroes Day in the Philippines.', 'ge2.gif')" style="cursor:pointer;">
+      <span style="color:red; font-weight:bold;">26</span>
+    </div>
+    <div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+  </div>
+</div>
+ 
+    <div class="month">
+  <div class="month-name">September 2024</div>
+  <div class="week-numbers">Week 36 - Week 40</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Week 1 -->
+    <div><span style="color:red; font-weight:bold;">1</span></div>
+    <div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+    
+    <!-- Week 2 -->
+    <div><span style="color:red; font-weight:bold;">8</span></div>
+    <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
+    
+    <!-- Week 3 -->
+    <div><span style="color:red; font-weight:bold;">15</span></div>
+    <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
+    
+    <!-- Week 4 -->
+    <div><span style="color:red; font-weight:bold;">22</span></div>
+    <div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
+    
+    <!-- Week 5 -->
+    <div><span style="color:red; font-weight:bold;">29</span></div>
+    <div>30</div>
+  </div>
+</div>
+
+
+    <div class="month">
+  <div class="month-name">October 2024</div>
+  <div class="week-numbers">Week 40 - Week 44</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- October starts Tuesday -->
+    <div></div><div></div>
+    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+    
+    <!-- Week 2 -->
+    <div><span style="color:red; font-weight:bold;">6</span></div>
+    <div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+    
+    <!-- Week 3 -->
+    <div><span style="color:red; font-weight:bold;">13</span></div>
+    <div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+    
+    <!-- Week 4 -->
+    <div><span style="color:red; font-weight:bold;">20</span></div>
+    <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+    
+    <!-- Week 5 -->
+    <div><span style="color:red; font-weight:bold;">27</span></div>
+    <div>28</div><div>29</div><div>30</div><div>31</div>
+  </div>
+</div>
+
+
+    <div class="month">
+  <div class="month-name">November 2024</div>
+  <div class="week-numbers">Week 44 - Week 48</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- November starts Friday -->
+    <div></div><div></div><div></div><div></div><div></div>
+    <div class="holiday" onclick="showPopup('All Saints Day', 'November 1 is All Saints Day in the Philippines.', 'aa.gif')" style="cursor:pointer;">
+      <span style="color:red; font-weight:bold;">1</span>
+    </div>
+    <div>2</div>
+    
+    <!-- Week 2 -->
+    <div><span style="color:red; font-weight:bold;">3</span></div>
+    <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
+    
+    <!-- Week 3 -->
+    <div><span style="color:red; font-weight:bold;">10</span></div>
+    <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div>
+    
+    <!-- Week 4 -->
+    <div><span style="color:red; font-weight:bold;">17</span></div>
+    <div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div>
+    
+    <!-- Week 5 -->
+    <div><span style="color:red; font-weight:bold;">24</span></div>
+    <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div>
+    <div class="holiday" onclick="showPopup('Bonifacio Day', 'November 30 is Bonifacio Day in the Philippines.', 'bo.gif')" style="cursor:pointer;">
+      <span style="color:red; font-weight:bold;">30</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="month">
+  <div class="month-name">December 2024</div>
+  <div class="week-numbers">Week 48 - Week 52</div>
+  <div class="days" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; gap:5px;">
+    
+    <!-- Headers -->
+    <div>Sun</div><div>Mon</div><div>Tue</div>
+    <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    
+    <!-- Week 1 -->
+    <div><span style="color:red; font-weight:bold;">1</span></div>
+    <div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+    
+    <!-- Week 2 -->
+    <div><span style="color:red; font-weight:bold;">8</span></div>
+    <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
+    
+    <!-- Week 3 -->
+    <div><span style="color:red; font-weight:bold;">15</span></div>
+    <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
+    
+    <!-- Week 4 -->
+    <div><span style="color:red; font-weight:bold;">22</span></div>
+    <div>23</div><div>24</div>
+    <div class="holiday" onclick="showPopup('Christmas Day', 'December 25 is Christmas Day in the Philippines.', 'chh.gif')" style="cursor:pointer;">
+      <span style="color:red; font-weight:bold;">25</span>
+    </div>
+    <div>26</div><div>27</div><div>28</div>
+    
+    <!-- Week 5 -->
+    <div><span style="color:red; font-weight:bold;">29</span></div>
+    <div class="holiday" onclick="showPopup('Rizal Day', 'December 30 is Rizal Day in the Philippines.', 'ri.gif')" style="cursor:pointer;">
+      <span style="color:red; font-weight:bold;">30</span>
+    </div>
+    <div>31</div>
+  </div>
+</div>
+           
+    <!-- Repeat similar sections for other months (March - December) -->
+
+    <!-- Popup for Holiday -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <h3 id="popup-title"></h3>
+        <p id="popup-description"></p>
+        <img id="popup-image" src="" alt="Holiday Image">
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+
+</div>
+
+<script>
+    function showPopup(title, description, image) {
+        document.getElementById('popup-title').textContent = title;
+        document.getElementById('popup-description').textContent = description;
+        document.getElementById('popup-image').src = image;
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById('popup-overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('popup-overlay').style.display = 'none';
+    }
+</script>
+<footer style="text-align:center; margin-top:20px; padding:10px; background:#f2f2f2; border-top:1px solid #ccc; font-family:Arial; font-size:14px;">
+  Marsman Jude Lapuz IT-203
+</footer>
+
+</body>
+</html>
